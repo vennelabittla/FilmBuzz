@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FilmBuzz</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      padding: 10px;
+      overflow: scroll;
+      overflow-x: hidden;
+      /* Disables horizontal scroll */
+      overflow-y: scroll;
+      /* Allows scrolling if needed */
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: small;
+    }
+
+    .navbar {
+      background-color: #222629;
+    }
+
+    body {
+      background-color: #222629;
+    }
+
+    #carouselExampleAutoplaying {
+      height: 400px;
+      /* Set the height as per your requirement */
+      overflow: hidden;
+    }
+
+    #carouselExampleAutoplaying .carousel-inner {
+      height: 100%;
+      /* Ensure the inner container takes up the full height of the outer container */
+    }
+
+    #carouselExampleAutoplaying .carousel-item img {
+      margin: 0;
+      object-fit: cover;
+      /* Optional: this will make the image cover the entire area without stretching */
+      height: 100%;
+    }
+
+
+    h3 {
+      margin-top: 2px;
+      color: #59E659;
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 20px;
+      background-color: #474b4f;
+    }
+
+    .card {
+      padding: 2px;
+      background-color: #6b6e70;
+      color: #C7F6C7;
+      max-width: 288px;
+      min-width: 288px;
+
+      margin-right: 10px;
+
+    }
+
+
+    .latmov {
+      width: 90vw;
+      display: flex;
+      margin: auto;
+      padding: 15px;
+      overflow: scroll;
+      overflow-y: hidden;
+      scrollbar-width: 5px;
+    }
+
+
+    .popmov {
+      width: 90vw;
+      display: flex;
+      margin: auto;
+      padding: 15px;
+      overflow: scroll;
+      overflow-y: hidden;
+      scrollbar-width: 5px;
+    }
+
+    .bollmov {
+      width: 90vw;
+      display: flex;
+      margin: auto;
+      padding: 15px;
+      overflow: scroll;
+      overflow-y: hidden;
+      scrollbar-width: 5px;
+    }
+
+    .card-title {
+      font-size: medium;
+    }
+
+    .card-img-top {
+      height: 360px;
+    }
+
+
+
+    .actor {
+      display: flex;
+      align-items: center;
+    }
+
+    .pic {
+      max-height: 400px;
+      min-height: 400px;
+      max-width: 380px;
+      min-width: 380px;
+      width: 50%;
+      margin-right: 20px;
+    }
+
+    .content {
+      max-width: 750px;
+      min-width: 750px;
+      max-height: 400px;
+      min-height: 400px;
+      width: 50%;
+      display: flex;
+    }
+
+    .col {
+      padding: 0%;
+      height: 300px;
+      border: 1px;
+      border-radius: 5px;
+      margin: 15px;
+    }
+
+    .col-6 {
+      height: 300px;
+      border: 1px;
+      border-radius: 5px;
+      margin: 15px;
+    }
+
+    .col-2 {
+      height: 300px;
+      border: 1px;
+      border-radius: 5px;
+      margin: 15px;
+    }
+
+    .container {
+      width: 100%;
+      background-color: #222629;
+      margin: auto;
+    }
+
+    .table {
+      background-color: #6b6e70;
+      color: #C7F6C7;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: #59E659;">FilmBuzz</a>
+      <button class="navbar-toggler" style="color: #59E659;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="boot2.html" style="color: #59E659;">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #59E659;">Latest Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #59E659;">Tollywood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #59E659;">Bollywood</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" style="color: #59E659;" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Actors
+            </a>
+            <ul class="dropdown-menu" style="color: #59E659;">
+              <li><a class="dropdown-item" href="#">Nani</a></li>
+              <li><a class="dropdown-item" href="#">Nikhil Siddhartha</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #59E659;">Genre</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="movie1.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="movie2.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="movie3.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="movie4.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <h3>Latest Movies</h3>
+
+  <div class="latmov mt-2 mb-2">
+    <div class="card" style="width: 18rem;">
+      <img src="lm1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">AMARAN</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="lm6.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">HANUMAN</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="lm3.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">KALKI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="lm5.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">KALKI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="lm2.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">DEVARA</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="lm4.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">GUNTURU KARAM</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+
+  </div>
+  <h3>Tollywood Movies</h3>
+  <div class="popmov mt-2 mb-2">
+    <div class="card" style="width: 18rem;">
+      <img src="pm1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">18 PAGES</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="pm2.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">MAJILI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="pm3.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">RADHE SHYAM</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="pm4.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">THOLI PREMA</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="pm5.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">NINNU KORI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="pm6.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">SHYAM SINGHA ROY</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+
+  </div>
+  <h3>Bollywood Movies</h3>
+  <div class="bollmov">
+    <div class="card" style="width: 18rem;">
+      <img src="bm1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">AASHIQUI 2</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="bm2.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">JAB WE MET</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="bm3.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">DEAR ZINDAGI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="bm5.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">DIL BECHARA</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="bm6.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">RAAZI</h5>
+        <a href="#" class="btn btn-primary">Watch now</a>
+      </div>
+    </div>
+  </div>
+  <h3>Nani</h3>
+  <section id="hero1" class="show">
+    <div class="actor">
+      <div class="pic">
+        <img src="nani.png" class="actor-img" alt="..." style="height: 368px; width: 300px; margin: 30px;">
+      </div>
+      <div class="content">
+        <p style="color: #C7F6C7; margin: 30px; align-items: center;">Ghanta Naveen Babu, better known by his stage name
+          Nani is a prominent actor in Telugu cinema who has also made a name for himself as a producer and television
+          presenter. He completed his schooling at St. Alphonso's High School and then attended Narayana Junior College
+          before graduating from Wesley College.
+
+          Nani was inspired to join the movie industry as a director by Mani Ratnam. He got his break as a clap director
+          with producer Anil Kumar for the movie Radha Gopalam (2005) in 2005.
+
+          He also worked as a director for the movies Allari Bullodu (2005), Asthram (2006), and Dhee (2007). He then
+          took
+          a break from the industry in order to work on a film script. During the time, his friend Bhargavi Mallela who
+          was working for World Space Satellite as an RJ, offered him a job to work as an RJ. Nani accepted the offer
+          and
+          hosted a program named "Non-Stop Nani" for a year.</p>
+      </div>
+    </div>
+
+    <table class="table" style="margin: 10px; border: 1px solid black; background-color: #6b6e70; color: #C7F6C7;">
+      <thead>
+        <tr>
+          <th scope="col">Movie Name</th>
+          <th scope="col">Budget</th>
+          <th scope="col">H/F</th>
+          <th scope="col">Ratings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hi Nanna</td>
+          <td>80 cr</td>
+          <td>H</td>
+          <td>9.5</td>
+        </tr>
+        <tr>
+          <td>Saripodha Shanivaram</td>
+          <td>90 cr</td>
+          <td>H</td>
+          <td>8.0</td>
+        </tr>
+        <tr>
+          <td>Ante Sundaraniki</td>
+          <td>50 cr</td>
+          <td>H</td>
+          <td>9.0</td>
+        </tr>
+        <tr>
+          <td>Neevevaro</td>
+          <td>50 cr</td>
+          <td>F</td>
+          <td>7.0</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h3>Nikhil Siddhartha</h3>
+  <section id="hero2" class="">
+    <div class="actor">
+      <div class="pic">
+        <img src="nikhil.png" class="actor-img" alt="..." style="height: 368px; width: 280px; margin: 30px;">
+      </div>
+      <div class="content">
+        <p style="color: #C7F6C7; margin: 30px; align-items: center;">Nikhil was born in Begumpet, Hyderabad. Nikhil did
+          his schooling in Hyderabad Public School (HPS) in Begumpet and St. Patricks' High School, Secunderabad. He was
+          brilliant in school and was a merit student. He studied at the RVR&JC engineering college, Guntur. He started
+          out as an assistant director for the film Hyderabad Nawaabs. He had minor roles in various movies before doing
+          Happy Days, the first movie in Tollywood with an overseas release date earlier than the Indian release.
+          Directed
+          by an Indian national award winner Sekhar Kammula, Nikhil plays one of the 4 male leads in the movie. It was
+          declared a smash hit and gave Nikhil overnight fame. Happy Days was one among the few low budget movies made
+          in
+          2007 that became commercially successful. His first solo lead movie was Ankit, Pallavi & Friends. He appeared
+          in
+          hit movies like Yuvatha and Veedu Theda which ran for 50 days in Andhra Pradesh and got his major breakthrough
+          in 2013 with the smash hit film Swamy Ra Ra, which was a blockbuster.</p>
+      </div>
+    </div>
+    </div>
+    <table class="table" style="margin: 10px; border: 1px solid black; background-color: #6b6e70; color: #C7F6C7;">
+      <thead>
+        <tr>
+          <th scope="col">Movie Name</th>
+          <th scope="col">Budget</th>
+          <th scope="col">H/F</th>
+          <th scope="col">Ratings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>18 Pages</td>
+          <td>70 cr</td>
+          <td>H</td>
+          <td>8.2</td>
+        </tr>
+        <tr>
+          <td>Arjun Suravaram</td>
+          <td>90 cr</td>
+          <td>H</td>
+          <td>7.8</td>
+        </tr>
+        <tr>
+          <td>Karthikeya</td>
+          <td>60 cr</td>
+          <td>H</td>
+          <td>8.0</td>
+        </tr>
+        <tr>
+          <td>Karthikeya 2</td>
+          <td>90 cr</td>
+          <td>H</td>
+          <td>8.9</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <button onclick="herotoggle()">Next</button>
+  <script>
+    function herotoggle() {
+      document.getElementById("hero1").classList.toggle("show");
+      document.getElementById("hero2").classList.toggle("show");
+    }
+  </script>
+
+  <div class="container mt-4">
+    <div class="row" style="width: 100%; background-color: #474b4f border: 2px;">
+      <div class="col">
+        <img src="action.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+      </div>
+      <div class="col-6">
+        <img src="crime.png" style="height: 300px; width: 100%; padding-left: 0%; border-radius: 13px;" alt="...">
+      </div>
+      <div class="col">
+        <img src="drama.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+      </div>
+    </div>
+    <div class="row" style="width: 100%; background-color: #474b4f border: 2px;">
+      <div class="col">
+        <img src="romance.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+      <div class="col">
+        <img src="thriller.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+    </div>
+    <div class="row" style="width: 100%; background-color: #474b4f border: 2px;">
+      <div class="col">
+        <img src="horror.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+      <div class="col-6">
+        <img src="mystery.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+      <div class="col">
+        <img src="comedy.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+      <div class="col">
+        <img src="adventure.png" style="height: 300px; width: 100%; border-radius: 13px;" alt="...">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
